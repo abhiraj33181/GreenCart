@@ -65,3 +65,22 @@ export const changeStock = async (req,res) => {
         res.json({success : false, message : error.message})
     }
 }
+
+// Get Product by query : /api/product/search?q=
+export const searchProduct = async (req,res) => {
+    try {
+        const { q } = req.query;
+
+        if (!q) {
+            return res.json({success : true, products : []})
+        }
+
+        const products = await productModel.find(
+            { name : { $regex : q, $options : "i" } 
+        }).limit(10)
+        res.json({success : true, products})
+    } catch (error) {
+        console.log(error.message);
+        res.json({success : false, message : error.message})
+    }
+}

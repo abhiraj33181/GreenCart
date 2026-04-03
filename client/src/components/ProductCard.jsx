@@ -18,7 +18,7 @@ const ProductCard = ({product}) => {
                 <p className="text-gray-700 font-medium text-lg truncate w-full">{product.name}</p>
                 <div className="flex items-center gap-0.5">
                     {Array(5).fill('').map((_, i) => (
-                            <img className="md:w-3.5 w3" src={i < 4 ? assets.star_icon : assets.star_dull_icon} />
+                            <img className="md:w-3.5 w3" src={i < 4 ? assets.star_icon : assets.star_dull_icon} key={i} />
                     ))}
                     <p>(1)</p>
                 </div>
